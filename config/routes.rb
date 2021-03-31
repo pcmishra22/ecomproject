@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get "about", to: 'info#about'
+  get "privacy", to: 'info#privacy'
+  get "faq", to: 'info#faq'
+  get "contact", to: 'info#contact'
+  resources :pages
+
+  #get 'pages/about', to: 'pages#about'
   #get 'welcome/index'
   devise_for :users
 
