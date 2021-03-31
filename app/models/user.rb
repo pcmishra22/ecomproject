@@ -4,15 +4,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
 
-     
-  belongs_to :role
+ 
+   
+  belongs_to :role, optional: true
   has_many :items, dependent: :destroy
 
   validates :name, presence: true
   before_save :assign_role
 
    def assign_role
-    self.role = Role.find_by name: 'User' if role.nil?
+    self.role = Role.find_by name: 'user' if role.nil?
   end
 
   def admin?
@@ -26,4 +27,6 @@ class User < ApplicationRecord
   def superuser?
   role.name == 'superuser'
   end
+
+ 
 end
