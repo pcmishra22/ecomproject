@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+   layout "header"
   before_action :set_page, only: %i[ show edit update destroy ]
 
   #before_action :authenticate_user!
