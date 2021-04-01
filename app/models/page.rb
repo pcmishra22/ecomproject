@@ -1,6 +1,6 @@
 class Page < ApplicationRecord
-	attr_accessible :description, :name, :permalink
-	validate_uniqueness_of :permalink
+	'''attr_accessible :description, :title, :permalink
+	validate_uniqueness_of :permalink'''
 
 	def to_param
 		permalink

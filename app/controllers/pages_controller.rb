@@ -1,17 +1,20 @@
 class PagesController < ApplicationController
-  before_action :set_page, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!
+  #before_action :set_page, only: %i[ show edit update destroy ]
+  #before_action :authenticate_user!
 
-  def about
-
-  end
-  # GET /pages or /pages.json
+   # GET /pages or /pages.json
   def index
     @pages = Page.all
   end
 
   # GET /pages/1 or /pages/1.json
   def show
+    @page = Page.find_by_permalink!(params[:id])
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @pages}
+    end
   end
 
   # GET /pages/new
@@ -21,6 +24,7 @@ class PagesController < ApplicationController
 
   # GET /pages/1/edit
   def edit
+    @page = Page.find_by_permalink!(params[:id])
   end
 
   # POST /pages or /pages.json
@@ -40,6 +44,7 @@ class PagesController < ApplicationController
 
   # PATCH/PUT /pages/1 or /pages/1.json
   def update
+    @page = Page.find_by_permalink!(params[:id])
     respond_to do |format|
       if @page.update(page_params)
         format.html { redirect_to @page, notice: "Page was successfully updated." }
@@ -53,6 +58,7 @@ class PagesController < ApplicationController
 
   # DELETE /pages/1 or /pages/1.json
   def destroy
+    @page = Page.find_by_permalink!(params[:id])
     @page.destroy
     respond_to do |format|
       format.html { redirect_to pages_url, notice: "Page was successfully destroyed." }
