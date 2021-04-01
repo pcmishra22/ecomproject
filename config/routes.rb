@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'admin/dashboard'
   #get "about", to: 'info#about'
   #get "privacy", to: 'info#privacy'
   #get "faq", to: 'info#faq'
