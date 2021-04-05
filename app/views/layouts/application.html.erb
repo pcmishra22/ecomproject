@@ -1,50 +1,87 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Ecomproject</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Tmart-Minimalist eCommerce HTML5 Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <%= render "base/cssplaceholder" %>
 
-  <body>
-     <div class="flex-container">
-    <header>
-      <% if user_signed_in? %>
-        Signed in as <%= current_user.email %>.<br>
-        Not you?
-        <%= link_to "Edit profile", edit_user_registration_path %>
-        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path %> or
-        <%= link_to "sign in", new_user_session_path %> |
-        <%= link_to "About Us", page_path("about") %>   |
-        <%= link_to "Contact Us", page_path("contact") %>   |
-        <%= link_to "FAQ", page_path("faq") %>   |
-        <%= link_to "Terms and Conditions", page_path("privacy") %>
-      <% end %>
+    <!-- Modernizr JS -->
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
 
-      <nav>
-        <% if current_user && current_user.admin? %>
-          <%= link_to "Items", items_path %> |
-          <%= link_to "Users", users_path %> |
-          <%= link_to "Roles", roles_path %> |
-          <%= link_to "Products", products_path %> |
-          <%= link_to "Categories", categories_path %> |
-          <%= link_to "Pages", pages_path %> |
-        <% end %>
-      </nav>
-    </header>
+<body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->  
 
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, id: "flash_#{name}" %>
-    <% end %>
-       <main>
-    <%= yield %>
-    </main>
-     </div>
-  </body>
+    <!-- Body main wrapper start -->
+    <div class="wrapper fixed__footer">
+        <!-- Start Header Style -->
+        <%= render "base/header" %>
+        <!-- End Header Style -->
+        
+        <div class="body__overlay"></div>
+        <!-- Start Offset Wrapper -->
+        <div class="offset__wrapper">
+            <!-- Start Search Popap -->
+            <%= render "base/searchpopup" %>
+            <!-- End Search Popap -->
+            <!-- Start Offset MEnu -->
+            <%= render "base/offsetmenu" %>
+            <!-- End Offset MEnu -->
+            <!-- Start Cart Panel -->
+            <%= render "base/cartpanel" %>
+            <!-- End Cart Panel -->
+        </div>
+        <!-- End Offset Wrapper -->
+        <%= render "base/featureproduct" %>
+        <div class="only-banner ptb--100 bg__white">
+            <div class="container">
+                <div class="only-banner-img">
+                    <a href="shop-sidebar.html"><img src="images/new-product/3.jpg" alt="new product"></a>
+                </div>
+            </div>
+        </div>
+        <!-- Start Our Product Area -->
+        <%= render "base/productarea" %>
+        <!-- End Our Product Area -->
+        <div class="only-banner ptb--100 bg__white">
+            <div class="container">
+                <div class="only-banner-img">
+                    <a href="shop-sidebar.html"><img src="images/new-product/6.jpg" alt="new product"></a>
+                </div>
+            </div>
+        </div>
+        <!-- Start Our Product Area -->
+        <%= render "base/productarea1" %>
+        <!-- End Our Product Area -->
+        <div class="only-banner bg__white">
+            <div class="container">
+                <div class="only-banner-img">
+                    <a href="shop-sidebar.html"><img src="images/new-product/7.jpg" alt="new product"></a>
+                </div>
+            </div>
+        </div>
+        <!-- Start Our Product Area -->
+        <%= render "base/productarea2" %>
+        <!-- End Our Product Area -->
+        <!-- Start Blog Area -->
+        <%= render "base/productarea3" %>
+        <!-- End Blog Area -->
+        <%= render "base/footer" %>
+    </div>
+    <!-- Body main wrapper end -->
+    <%= render "base/quickview" %>
+    <!-- All javascript code here -->
+    <%= render "base/jsplaceholder" %>
+
+</body>
+
 </html>
+
+<%= yield %>

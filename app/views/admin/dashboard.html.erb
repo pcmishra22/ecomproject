@@ -43,12 +43,27 @@ The above copyright notice and this permission notice shall be included in all c
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
+
+
+
+
+
+
           <li class="nav-item active  ">
             <a class="nav-link" href="./dashboard.html">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="/categories">
+              <i class="material-icons">person</i>
+              <p>           <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+ <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+</p>
+            </a>
+          </li>
+
           <li class="nav-item ">
             <a class="nav-link" href="/categories">
               <i class="material-icons">person</i>

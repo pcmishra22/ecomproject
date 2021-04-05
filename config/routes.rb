@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   get 'admin/dashboard'
   #get "about", to: 'info#about'
   #get "privacy", to: 'info#privacy'
@@ -9,9 +10,22 @@ Rails.application.routes.draw do
 
   #get 'pages/about', to: 'pages#about'
   #get 'welcome/index'
+  #devise_for :users
+  #devise_for :users, controllers: {session: "session"}
   devise_for :users
 
+  devise_scope :user do  
+     get '/users/sign_out' => 'devise/sessions#destroy'     
+  end
+  #devise_for :users, :controllers => { :session => "session" }
+
+
+  get '/admin/dashboard' => "admin#dashboard", :as => :user_root
+  
+  get "log_out" => "session#destroy", :as => "log_out"
+
   scope '/admin' do
+  
   resources :users
 end
   resources :items
