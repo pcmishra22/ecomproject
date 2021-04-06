@@ -7,9 +7,15 @@ class User::PasswordsController < Devise::PasswordsController
   # end
 
   # POST /resource/password
-  # def create
+ def create
   #   super
-  # end
+  @user = User.find_by(email: params[:email])
+  if @user.present?
+    #send email
+    redirect_to root_path, notice: "we have sent a link to reset password to associated account"
+  else
+    
+   end
 
   # GET /resource/password/edit?reset_password_token=abcdef
   # def edit
